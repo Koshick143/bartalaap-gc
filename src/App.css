@@ -126,6 +126,9 @@ form input {
     #respo{
         display: none;
     }
+    .display{
+        height: 88vh;
+    };
 
     form{
         display: flex;
