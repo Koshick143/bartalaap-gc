@@ -91,8 +91,11 @@ export default function App() {
             <div ref={messagesEndRef} />
           </div>
           <form className='flex' onSubmit={sendMessage}>
+            <div id='in-box'>
             <input value={message} onChange={(e) => setMessage(e.target.value)} placeholder='Enter message' />
             <SendButton id='send-btn' />
+            </div>
+           
           </form>
         </>): <h2 className='welcome'>Aaha olop Bartalaap koru</h2>}
       </main>
