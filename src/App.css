@@ -67,6 +67,7 @@ form{
     justify-content: flex-end;
     background-color: rgb(58, 251, 65);
     display: flex;
+    justify-content: center;
     left: 48vw;
     
   }
@@ -113,6 +114,12 @@ form input {
     .brand {
         padding: 0 5px;
     }
+
+    form{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     .message{
         height: 70vh;;
     }
@@ -125,10 +132,6 @@ form input {
     .display {
         height: calc(100% - 8vh);
         padding-bottom: 8vh;
-    }
-
-    form{
-        width: 80vw;
     }
     form input {
         height: 2vh;
