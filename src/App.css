@@ -110,13 +110,13 @@ form input {
 /* Media Query for Phones */
 @media screen and (max-width: 768px) {
     header {
-        height: 10vh;
+        height: 5vh;
     }
     .brand {
         padding: 0 5px;
     }
     #logo {
-        width: 40px;
+        width: 20px;
     }
     main {
         min-height: calc(100vh - 10vh);
@@ -126,6 +126,6 @@ form input {
         padding-bottom: 8vh;
     }
     form input {
-        height: 8vh;
+        height: 2vh;
     }
 }
