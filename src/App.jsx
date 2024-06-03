@@ -93,7 +93,7 @@ export default function App() {
           <form className='flex' onSubmit={sendMessage}>
             <div id='in-box'>
             <input value={message} onChange={(e) => setMessage(e.target.value)} placeholder='Enter message' />
-            <SendButton id='send-btn' />
+            <SendButton  />
             </div>
            
           </form>

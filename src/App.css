@@ -131,7 +131,7 @@ form div input {
     };
 
     
-    #id-box{
+    #in-box{
         justify-content: space-around;
         align-items: center;
         height: 4vh ;
@@ -148,14 +148,6 @@ form div input {
     form div input {
         height: 3vh;
         width: 60vw;
-    }
-    #send-btn{
-        height: 3vh;
-        margin:0;
-        margin-left: 90vw;
-        position: relative;
-        left:90vw
-        
     }
    
 }
