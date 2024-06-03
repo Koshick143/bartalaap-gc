@@ -134,7 +134,7 @@ form input {
         display: flex;
         justify-content: space-around;
         align-items: center;
-        height: 10vh ;
+        height: 5vh ;
     }
     
     #logo {
@@ -151,6 +151,8 @@ form input {
     }
     #send-btn{
         height: 3vh;
+        position: relative;
+        right: 0;
     }
    
 }
