@@ -127,7 +127,7 @@ form input {
         display: none;
     }
     .display{
-        height: 80vh;
+        height: 75vh;
     };
 
     form{
@@ -147,6 +147,6 @@ form input {
    
     form input {
         height: 2vh;
-        width: 80vw;
+        width: 75vw;
     }
 }
