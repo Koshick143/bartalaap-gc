@@ -127,12 +127,12 @@ form input {
         display: none;
     }
     .display{
-        height: 85vh;
+        height: 80vh;
     };
 
     form{
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
         height: 5vh ;
     }
