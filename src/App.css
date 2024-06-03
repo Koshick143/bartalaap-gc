@@ -132,9 +132,9 @@ form input {
 
     form{
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
-        height: 5vh ;
+        height: 10vh ;
     }
     
     #logo {
