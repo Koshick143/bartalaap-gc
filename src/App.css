@@ -127,14 +127,14 @@ form input {
         display: none;
     }
     .display{
-        height: 70vh;
+        height: 75vh;
     };
 
     form{
         display: flex;
         justify-content: space-around;
         align-items: center;
-        height: 5vh ;
+        height: 3vh ;
     }
     
     #logo {
@@ -151,8 +151,7 @@ form input {
     }
     #send-btn{
         height: 3vh;
-        position: relative;
-        right: 0;
+        
     }
    
 }
