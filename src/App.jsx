@@ -3,7 +3,8 @@ import { auth, firestore } from './firebase';
 import { signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from 'firebase/auth';
 import { collection, addDoc, serverTimestamp, orderBy, query, onSnapshot } from 'firebase/firestore';
 import DrawerList from './components/DrawerList';
-import SendButton from './components/SendButton';
+import SendIcon from '@mui/icons-material/Send';
+
 
 import '../src/App.css';
 
@@ -93,7 +94,7 @@ export default function App() {
           <form className='flex' onSubmit={sendMessage}>
             <div id='in-box'>
             <input value={message} onChange={(e) => setMessage(e.target.value)} placeholder='Enter message' />
-              <button type='submit'>send</button>
+              <button id='send-btn' type='submit'><SendIcon/></button>
             </div>
            
           </form>
