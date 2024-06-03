@@ -7,7 +7,7 @@ export default function SendButton() {
   return (
     <Stack direction="row" spacing={2}>
     
-      <Button variant="contained" type='submit' endIcon={<SendIcon />}/>
+      <Button variant="contained" size='small' type='submit' endIcon={<SendIcon />}/>
         
      
     </Stack>
