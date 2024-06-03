@@ -152,6 +152,7 @@ form div input {
     #send-btn{
         height: 3vh;
         margin:0;
+        margin-left: 90vw;
         position: relative;
         left:90vw
         
