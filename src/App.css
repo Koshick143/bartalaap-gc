@@ -128,13 +128,8 @@ form input {
     #logo {
         width: 20px;
     }
-    main {
-        min-height: calc(100vh - 10vh);
-    }
-    .display {
-        height: calc(100% - 8vh);
-        padding-bottom: 8vh;
-    }
+   
+   
     form input {
         height: 2vh;
         width: 80vw;
