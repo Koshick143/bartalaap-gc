@@ -68,7 +68,9 @@ form{
     background-color: rgb(58, 251, 65);
     display: flex;
     justify-content: center;
+    align-items: start;
     left: 48vw;
+    
     
   }
   
