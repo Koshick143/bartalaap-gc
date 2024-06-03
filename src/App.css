@@ -131,10 +131,10 @@ form input {
     };
 
     form{
-        display: flex;
+       
         justify-content: space-around;
         align-items: center;
-        height: 3vh ;
+        height: 4vh ;
     }
     
     #logo {
