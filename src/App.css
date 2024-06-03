@@ -111,10 +111,20 @@ form input {
 /* Media Query for Phones */
 @media screen and (max-width: 768px) {
     header {
-        height: 5vh;
+        height: 8vh;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
     }
     .brand {
         padding: 0 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #respo{
+        display: none;
     }
 
     form{
@@ -122,11 +132,9 @@ form input {
         justify-content: center;
         align-items: center;
     }
-    .message{
-        height: 70vh;;
-    }
+    
     #logo {
-        width: 20px;
+        width: 30px;
     }
    
    

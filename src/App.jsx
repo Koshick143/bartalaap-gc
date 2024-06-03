@@ -67,7 +67,7 @@ export default function App() {
           <img src="/logo2.0 (1).svg" id='logo' alt="" />
           <div>
           <h1 className='h-20 bg-red'>Bartalaap</h1>
-          <p> The Group Chat</p>
+          <p id='respo'> The Group Chat</p>
           </div>
          
         </div>
