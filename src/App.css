@@ -115,6 +115,9 @@ form input {
     .brand {
         padding: 0 5px;
     }
+    .message{
+        height: 70vh;;
+    }
     #logo {
         width: 20px;
     }
@@ -127,5 +130,6 @@ form input {
     }
     form input {
         height: 2vh;
+        width: 80vw;
     }
 }
