@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { auth, firestore } from '../firebase';
 import { signOut, onAuthStateChanged } from 'firebase/auth';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, query, where, getDocs, doc, setDoc, serverTimestamp } from 'firebase/firestore';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
@@ -17,8 +17,16 @@ export default function DrawerList() {
   const [chatUsers, setChatUsers] = useState([]);
 
   useEffect(() => {
-    const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
-      setUser(user);
+    const unsubscribeAuth = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        await setUserOnline(user.uid);
+        setUser(user);
+      } else {
+        if (user) {
+          await setUserOffline(user.uid);
+        }
+        setUser(null);
+      }
     });
 
     return () => unsubscribeAuth();
@@ -27,7 +35,8 @@ export default function DrawerList() {
   useEffect(() => {
     const fetchChatUsers = async () => {
       const usersCollection = collection(firestore, 'users');
-      const usersSnapshot = await getDocs(usersCollection);
+      const q = query(usersCollection, where('online', '==', true));
+      const usersSnapshot = await getDocs(q);
       const usersList = usersSnapshot.docs.map(doc => doc.data());
       setChatUsers(usersList);
     };
@@ -41,9 +50,26 @@ export default function DrawerList() {
     setOpen(newOpen);
   };
 
-  const handleSignOut = () => {
-    signOut(auth);
+  const handleSignOut = async () => {
+    await setUserOffline(user.uid);
+    await signOut(auth);
     setOpen(false);
+  };
+
+  const setUserOnline = async (userId) => {
+    const userRef = doc(firestore, 'users', userId);
+    await setDoc(userRef, {
+      online: true,
+      lastSeen: serverTimestamp(),
+    }, { merge: true });
+  };
+
+  const setUserOffline = async (userId) => {
+    const userRef = doc(firestore, 'users', userId);
+    await setDoc(userRef, {
+      online: false,
+      lastSeen: serverTimestamp(),
+    }, { merge: true });
   };
 
   const drawerContent = (
@@ -62,7 +88,7 @@ export default function DrawerList() {
         </Box>
       )}
       <Box sx={{ padding: 2 }}>
-        <Typography variant="h6">Chats</Typography>
+        <Typography variant="h6">Online People</Typography>
         {chatUsers.map((chatUser, index) => (
           <ListItem key={index}>
             <ListItemAvatar>
