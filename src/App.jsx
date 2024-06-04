@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { auth, firestore } from './firebase';
-import { signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from 'firebase/auth';
+import { signInWithPopup, GoogleAuthProvider, onAuthStateChanged ,signOut } from 'firebase/auth';
 import { collection, addDoc, serverTimestamp, orderBy, query, onSnapshot, doc, setDoc } from 'firebase/firestore';
 import DrawerList from './components/DrawerList';
 import SendIcon from '@mui/icons-material/Send';
