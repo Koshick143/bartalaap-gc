@@ -10,6 +10,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
+import List from '@mui/material/List';
 
 export default function DrawerList() {
   const [open, setOpen] = useState(false);
@@ -34,24 +35,26 @@ export default function DrawerList() {
 
   useEffect(() => {
     const fetchChatUsers = async () => {
-      const usersCollection = collection(firestore, 'users');
-      const q = query(usersCollection, where('online', '==', true));
-      const usersSnapshot = await getDocs(q);
-      const usersList = usersSnapshot.docs.map(doc => doc.data());
-      setChatUsers(usersList);
+      if (user) {
+        const usersCollection = collection(firestore, 'users');
+        const q = query(usersCollection, where('online', '==', true));
+        const usersSnapshot = await getDocs(q);
+        const usersList = usersSnapshot.docs.map(doc => doc.data());
+        setChatUsers(usersList);
+      }
     };
 
-    if (user) {
-      fetchChatUsers();
-    }
-  }, [user]);
+    fetchChatUsers();
+  }, [user, open]); // Re-fetch users when the drawer opens
 
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
 
   const handleSignOut = async () => {
-    await setUserOffline(user.uid);
+    if (user) {
+      await setUserOffline(user.uid);
+    }
     await signOut(auth);
     setOpen(false);
   };
@@ -89,14 +92,16 @@ export default function DrawerList() {
       )}
       <Box sx={{ padding: 2 }}>
         <Typography variant="h6">Online People</Typography>
-        {chatUsers.map((chatUser, index) => (
-          <ListItem key={index}>
-            <ListItemAvatar>
-              <Avatar src={chatUser.photoURL} alt={chatUser.displayName} />
-            </ListItemAvatar>
-            <ListItemText primary={chatUser.displayName} />
-          </ListItem>
-        ))}
+        <List>
+          {chatUsers.map((chatUser, index) => (
+            <ListItem key={index}>
+              <ListItemAvatar>
+                <Avatar src={chatUser.photoURL} alt={chatUser.displayName} />
+              </ListItemAvatar>
+              <ListItemText primary={chatUser.displayName} />
+            </ListItem>
+          ))}
+        </List>
       </Box>
     </Box>
   );
