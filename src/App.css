@@ -61,6 +61,7 @@ form{
     color: white;
     position: relative;
     border-radius: 5px;
+   
 }
 
 .sent {
@@ -70,17 +71,21 @@ form{
     justify-content: center;
     align-items: start;
     left: 48vw;
+    text-align: left;
     
     
   }
   
-  .recived {
+  .received {
     justify-content: flex-start;
     background-color: rgb(11, 148, 228);
     color: white;
   }
+  form div{
+    width: 99vw;
+  }
 form div input {
-    width: 100%;
+    width: 60%;
     height: 10vh;
    margin: 0 7px 7px 7px;
    text-align: center;
@@ -125,6 +130,12 @@ form div input {
 
 
 }
+/* 
+#in-box{
+    justify-content: space-around;
+    align-items: center;
+    height: 4vh ;
+} */
 
 /* Media Query for Phones */
 @media screen and (max-width: 768px) {

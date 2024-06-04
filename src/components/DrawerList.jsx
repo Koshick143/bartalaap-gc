@@ -12,22 +12,14 @@ import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
 
-export default function DrawerList() {
+export default function DrawerList({ onSignOut }) {
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState(null);
   const [chatUsers, setChatUsers] = useState([]);
 
   useEffect(() => {
-    const unsubscribeAuth = onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        await setUserOnline(user.uid);
-        setUser(user);
-      } else {
-        if (user) {
-          await setUserOffline(user.uid);
-        }
-        setUser(null);
-      }
+    const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
+      setUser(user);
     });
 
     return () => unsubscribeAuth();
@@ -51,30 +43,6 @@ export default function DrawerList() {
     setOpen(newOpen);
   };
 
-  const handleSignOut = async () => {
-    if (user) {
-      await setUserOffline(user.uid);
-    }
-    await signOut(auth);
-    setOpen(false);
-  };
-
-  const setUserOnline = async (userId) => {
-    const userRef = doc(firestore, 'users', userId);
-    await setDoc(userRef, {
-      online: true,
-      lastSeen: serverTimestamp(),
-    }, { merge: true });
-  };
-
-  const setUserOffline = async (userId) => {
-    const userRef = doc(firestore, 'users', userId);
-    await setDoc(userRef, {
-      online: false,
-      lastSeen: serverTimestamp(),
-    }, { merge: true });
-  };
-
   const drawerContent = (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
       {user && (
@@ -85,13 +53,13 @@ export default function DrawerList() {
             </ListItemAvatar>
             <ListItemText primary={user.displayName} />
           </ListItem>
-          <Button variant="contained" color="primary" onClick={handleSignOut}>
+          <Button variant="contained" color="primary" onClick={onSignOut}>
             Sign Out
           </Button>
         </Box>
       )}
       <Box sx={{ padding: 2 }}>
-        <Typography variant="h6">Online People</Typography>
+        <Typography variant="h6">Online</Typography>
         <List>
           {chatUsers.map((chatUser, index) => (
             <ListItem key={index}>
